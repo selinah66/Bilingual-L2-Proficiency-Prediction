@@ -1,0 +1,21 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label=<IA_DWELL_TIME &le; 0.475<br/>gini = 0.499<br/>samples = 30<br/>value = [25, 23]<br/>class = Low>, fillcolor="#fdf5ef"] ;
+1 [label=<IA_FIXATION_COUNT &le; 0.338<br/>gini = 0.408<br/>samples = 23<br/>value = [25, 10]<br/>class = Low>, fillcolor="#efb388"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<regression_dwell_ratio &le; 1.266<br/>gini = 0.32<br/>samples = 19<br/>value = [24, 6]<br/>class = Low>, fillcolor="#eca06a"] ;
+1 -> 2 ;
+3 [label=<IA_DWELL_TIME &le; -0.033<br/>gini = 0.111<br/>samples = 11<br/>value = [16, 1]<br/>class = Low>, fillcolor="#e78945"] ;
+2 -> 3 ;
+4 [label=<gini = 0.219<br/>samples = 6<br/>value = [7, 1]<br/>class = Low>, fillcolor="#e99355"] ;
+3 -> 4 ;
+5 [label=<gini = 0.0<br/>samples = 5<br/>value = [9, 0]<br/>class = Low>, fillcolor="#e58139"] ;
+3 -> 5 ;
+6 [label=<gini = 0.473<br/>samples = 8<br/>value = [8, 5]<br/>class = Low>, fillcolor="#f5d0b5"] ;
+2 -> 6 ;
+7 [label=<gini = 0.32<br/>samples = 4<br/>value = [1, 4]<br/>class = High>, fillcolor="#6ab6ec"] ;
+1 -> 7 ;
+8 [label=<gini = 0.0<br/>samples = 7<br/>value = [0, 13]<br/>class = High>, fillcolor="#399de5"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+}

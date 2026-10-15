@@ -1,0 +1,20 @@
+# Core data processing
+numpy
+pandas
+scipy
+
+# Machine learning
+scikit-learn
+
+# Visualization and tree figures
+matplotlib
+seaborn
+Pillow
+graphviz
+
+# Excel input support for pandas.read_excel()
+openpyxl
+
+# Note: the Graphviz Python package requires the Graphviz system executable
+# (`dot`) for Graphviz-rendered tree figures. Install it separately:
+# macOS: brew install graphviz

@@ -4,8 +4,9 @@ An exploratory machine-learning study connecting bilingual reading behavior with
 
 **Reported conference result:** 69% accuracy and macro F1 of 0.69 on 32 participant samples, compared with a 50% majority-class baseline.
 
-**Authors:** Selina Hui (Project Lead), Lily Wu, Asha Dukkipati, and Sienna Jackson  
+**Authors:** Selina Hui (Project Lead), Lily Meihui Wu, Asha Dukkipati, and Sienna Jackson  
 **Repository:** [NeurotechUSC Bilingual Code-Switching](https://github.com/selinah66/NeurotechUSC-Bilingual-Code-Switching)  
+**Conference Date:** California NeuroTechnology Conference 2025 (https://caneurotech.vercel.app/), Saturday, April 26th, 2025
 **Conference materials:** [Poster](docs/BPET_Poster.pdf) · [Supplemental information and figures](docs/supplementalFig.pdf)
 
 *Poster title: Prediction of Bilingual Proficiency through Eye-Tracking Analysis of Mandarin Chinese-English Code-Switching: A Machine Learning Approach.*
@@ -16,17 +17,12 @@ How do eye-movement patterns differ between English proficiency groups, and how 
 
 The analysis examines measures such as fixation counts, dwell time, and regression-path duration. These describe aspects of reading behavior and provide indirect indicators of processing demands; they do not directly measure comprehension or establish a cognitive mechanism.
 
-## My contribution
-
-I led the project, introduced the research question, and shared learning resources with teammates. My technical contributions included engineering eye-movement features, developing a random forest classifier, evaluating model performance, and preparing the conference presentation.
-
-**Collaborators:** Lily Meihui Wu, Asha Dukkipati, Sienna Jackson
-
 ## Project overview
 
-Reading behavior provides a way to investigate how bilingual readers process language. This project reuses published eye-tracking data to examine proficiency-related reading patterns and construct participant-level predictors of English L2 proficiency.
-
-The workflow combines data inspection, preprocessing, feature aggregation, random-forest classification, and exploratory visualization. The repository documents a completed conference project; the current code reorganization is intended to make the historical analysis easier to understand, without introducing a new analysis or replacing the reported results.
+This project combines data inspection, preprocessing, participant-level
+feature engineering, random-forest classification, and exploratory
+visualization using published eye-tracking data. The repository documents
+the completed conference analysis and preserves its reported results.
 
 ## Data source
 
@@ -72,7 +68,7 @@ The historical aggregation also attaches the first retained `CONDITION` value fo
 
 ### Evaluation design
 
-We used a **stratified participant-level split**, allocating 60% of participants to training and 40% to evaluation, with random_state=42. The 80 participants were evenly divided between proficiency groups, resulting in 48 training participants (24 per group) and 32 evaluation participants (16 per group). Each modeling row represented one participant, so no participant appeared in both partitions.
+We used a **stratified participant-level split**, allocating 60% of participants to training and 40% to evaluation, with `random_state=42`. The 80 participants were evenly divided between proficiency groups, resulting in 48 training participants (24 per group) and 32 evaluation participants (16 per group). Each modeling row represented one participant, so no participant appeared in both partitions.
 
 Random-forest tuning and cross-validation summaries used **5-fold cross-validation repeated 3 times**. Randomized hyperparameter search evaluated **50 candidate configurations**, scored by weighted F1, with 15 fold evaluations per candidate, as documented in supplemental Figure S9. The separate classifier-comparison utility used 5-fold cross-validation. Participants could appear in different roles across folds or repeats, but never on both sides of an individual fold split.
 
@@ -86,7 +82,7 @@ Exploratory comparisons associated lower proficiency with longer dwell times, mo
 
 ### Primary reported result
 
-These results are transcribed from **poster Table 3**, which agrees with the classification-report portion of supplemental Figure S9.
+These results are transcribed from **poster Table 3** similar to the classification-report portion of supplemental Figure S9.
 
 | Metric | Reported result |
 | --- | --- |
@@ -109,7 +105,7 @@ Reported accuracy is approximately **19 percentage points above the majority-cla
 <details>
 <summary>Original conference classification table</summary>
 
-![Original classification table from the conference poster](Figures/resultTable.png)
+![Original classification table from the conference poster](figures/resultTable.png)
 
 Poster Table 3, extracted without recomputing results. Support values count participants; metrics are rounded to two decimal places. Balanced accuracy above summarizes the reported macro recall and is not a separately retained model output.
 
@@ -117,14 +113,14 @@ Poster Table 3, extracted without recomputing results. Support values count part
 
 ### Selected figures
 
-![Dwell-time and fixation-count distributions by proficiency group](Figures/readingMeasuresbyProf.png)
+![Dwell-time and fixation-count distributions by proficiency group](figures/readingMeasuresbyProf.png)
 
 **Figure 1. Reading behavior by proficiency group.** Distributions of dwell
 time (milliseconds) and fixation count for low- and high-proficiency readers.
 The observations are interest-area records, with repeated measurements from
 participants; they are not independent participant-level samples.
 
-![Exploratory feature importance and target correlations](Figures/featureImportancelogFixVariant.png)
+![Exploratory feature importance and target correlations](figures/featureImportancelogFixVariant.png)
 
 **Figure 2. Exploratory feature-importance analysis.** Random-forest
 importance scores and correlations with the encoded proficiency label for
@@ -166,25 +162,13 @@ These optimized settings differ from the defaults in the supplied `config.py`, s
 
 `compare_classifiers()` and `analyze_model_stability()` support supplementary model comparisons and variability analyses. `apply_transformations()` applies previously fitted preprocessing state. Plotting and reporting functions help inspect the analysis and are not separate prediction models.
 
-## Reproduction and historical version
-
-| Item | Reference |
-| --- | --- |
-| Conference analysis script | REPLACE_WITH_AUTHORITATIVE_SCRIPT_PATH |
-| Reference commit or release | REPLACE_WITH_COMMIT_OR_TAG |
-| Reorganized entry-point script | REPLACE_WITH_ENTRY_POINT_PATH |
-| Conference metrics and figures | REPLACE_WITH_OUTPUT_PATHS |
-| Historical environment specification | REPLACE_WITH_PATH_OR_STATE_NOT_RECORDED |
-
 ### Execution
 
 Place the input workbook at the location configured in `config.py`, then run the confirmed entry-point script from the repository root:
 
 ```bash
-python src/l2_proficiency/main.py
+python3 src/l2_proficiency/main.py
 ```
-
-The supplied reorganized modules do not yet include an updated entry-point script. The command above is a placeholder until that script and its imports are connected to the historical workflow.
 
 ### Configured settings
 
@@ -207,6 +191,7 @@ These describe the supplied configuration, not the fitted parameters of every ex
 The Python modules use `numpy`, `pandas`, `scipy`, `scikit-learn`, `matplotlib`, `seaborn`, `openpyxl`, `Pillow`, and the Python `graphviz` package. Tree rendering also requires the Graphviz system application. The R files are source-study supporting scripts and are separate from the Python classification workflow.
 
 **Python version:** Python 3.14.8
+Exact package versions used for the conference analysis were not recorded.
 
 Some historical operations did not specify random seeds. Reorganization alone does not guarantee identical rerun scores; original saved metrics, figures, and fitted models, where available, are the record of the conference results.
 
@@ -216,10 +201,10 @@ This project was completed collaboratively by Selina Hui, Lily Meihui Wu, Sienna
 
 | Contributor | Contributions |
 | --- | --- |
-| **Selina Hui** | Data inspection, feature engineering, model experimentation, visualization, interpretation of findings, and poster preparation. |
+| **Selina Hui** | Project initiation, data inspection, feature engineering, model experimentation, visualization, interpretation of findings, and poster preparation. |
 | **Lily Meihui Wu** | Data analysis, preprocessing, and machine-learning model development, contributing across the analysis pipeline. |
-| **Sienna Jackson** | Literature review and helped guide feature engineering through relevant research on bilingual language processing and eye-movement measures. |
-| **Asha Dukkipati** | CInitial project design, the shift from code-switching prediction to L2 proficiency prediction; designed the poster layout, translated model results into presentation writing and content. |
+| **Sienna Jackson** | Literature review and guidance on feature engineering based on research into bilingual language processing and eye-movement measures. |
+| **Asha Dukkipati** | Initial project design, refinement of the prediction objective, poster layout, presentation of model results, and abstract writing. |
 
 ## Limitations and future directions
 

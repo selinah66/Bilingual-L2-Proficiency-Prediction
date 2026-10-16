@@ -5,8 +5,8 @@ An exploratory machine-learning study connecting bilingual reading behavior with
 **Reported conference result:** 69% accuracy and macro F1 of 0.69 on 32 participant samples, compared with a 50% majority-class baseline.
 
 **Authors:** Selina Hui (Project Lead), Lily Meihui Wu, Asha Dukkipati, and Sienna Jackson  
-**Repository:** [NeurotechUSC Bilingual Code-Switching](https://github.com/selinah66/NeurotechUSC-Bilingual-Code-Switching)  
 **Conference Date:** California NeuroTechnology Conference 2025 (https://caneurotech.vercel.app/), Saturday, April 26th, 2025
+
 **Conference materials:** [Poster](docs/BPET_Poster.pdf) · [Supplemental information and figures](docs/supplementalFig.pdf)
 
 *Poster title: Prediction of Bilingual Proficiency through Eye-Tracking Analysis of Mandarin Chinese-English Code-Switching: A Machine Learning Approach.*

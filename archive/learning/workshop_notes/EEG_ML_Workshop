@@ -1,0 +1,94 @@
+**NOTE:** You are encouraged to experiment with different visualization techniques and quality checks. You can use AI assistants to help troubleshoot issues, explain unfamiliar concepts, or suggest additional analyses.
+
+**AI TOOLS:** ChatGPT, Claude, MetaAI, Poe.com, etc.
+
+---
+
+### NeurotechUSC Machine Learning EEG Data Analysis Practice ###
+
+#### **Step 1: Data Acquisition**
+
+1. **Visit our Project repository:**
+
+https://github.com/selinah66/NeurotechUSC-Bilingual-Code-Switching (SHARE GITHUB WITH THEIR ACCOUNTS)
+
+2. **Download the EEG data files from the DataCollection folder:**
+
+   a) **Data Location:** 
+      - Navigate to the "data" subfolder within the DataCollection folder.
+      - This folder will be present if you've run the data collection pipeline.
+
+   b) **Folder Structure:**
+      The data is organized in a hierarchical structure:
+      ```
+      DataCollection/
+      └── data/
+          └── [participant_number]/
+              └── [visit_number]/
+                  └── [trial_number]/
+      ```
+      For example: `DataCollection/data/001/01/001/`
+
+   c) **Data Files:**
+      Each trial folder contains two CSV files:
+      - `accelerometer_data.csv`
+      - `eeg_data_raw.csv`
+
+   d) **File Formats:**
+      - `eeg_data_raw.csv`:
+        - 9 columns total
+        - Column 1: Timestamp
+        - Columns 2-9: Data from 8 EEG channels
+
+      - `accelerometer_data.csv`:
+        - 9 columns total
+        - Column 1: Timestamp
+        - Column 2: Device ID
+        - Columns 3-5: X, Y, Z (spatial coordinates)
+        - Columns 6-7: Pitch and Roll angles (likely in degrees)
+        - Column 8: Acceleration
+        - Column 9: Inclination
+        Note: Exact meanings of accelerometer data columns are not fully specified by Neurosity.
+
+   e) **Alternative Data Format:**
+      - If you prefer to work with MNE Raw Array format:
+        1. Navigate to the ModelDevelopment folder
+        2. Run the `preprocessing.py` script
+        3. This will convert the CSV data into MNE Raw Array format
+
+   - Click on each data file and select **"Download"**.
+   - Alternatively, clone the repository using `git clone https://github.com/UniversumX/Universum.git`.
+
+3. **Store the data either on your local machine.**
+
+#### **Step 2: Setting Up the Environment**
+**Choose your preferred working environment:**
+
+   - **Google Colab**
+   - **Jupyter Notebook**
+   - **Code editor** I recommend VS Code or something else with an appropriate Python environment.
+
+#### **Step 3: Loading the Data**
+
+1. **Import necessary libraries:**
+
+   ```python
+   import numpy as np
+   import pandas as pd
+   import matplotlib.pyplot as plt
+   import mne  # Our data will be mainly in MNE EEG format
+   ```
+
+2. **Load the EEG data:**
+
+   - For data in .vhdr .eeg and .vmark file format (all three files read together as EEG data)
+
+     ```python
+     # Adjust the file path as needed
+   vhdr_path = 'path/to/your/data.vhdr'  # Path to the .vhdr file
+   raw = mne.io.read_raw_brainvision(vhdr_path, preload=True)  # preload loads data into RAM
+
+     # Read the .vmark file and extract event information
+   with open('path/to/your/data.vmark', 'r') as vmark_file:
+   vmark_lines = vmark_file.readlines()
+     ```

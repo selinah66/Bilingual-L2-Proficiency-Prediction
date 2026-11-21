@@ -3,8 +3,8 @@ from pathlib import Path
 # Data paths
 # This assumes config.py is located at src/l2_proficiency/config.py.
 ROOT_DIR = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT_DIR / "Data"
-FILEPATH = DATA_DIR / "RawEyeMovement.xlsx"
+DATA_DIR = ROOT_DIR / "data"
+FILEPATH = DATA_DIR / "IA_data.xlsx"
 
 # Data Processing Settings
 TARGET_COLUMN = "L2 PROFICIENCY"

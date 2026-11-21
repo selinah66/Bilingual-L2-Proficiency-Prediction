@@ -25,7 +25,6 @@ import io
 import shutil
 import textwrap
 
-import graphviz
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -390,9 +389,14 @@ def visualize_decision_trees(model, feature_names, max_depth=3, n_trees=3):
     ``Low``. This changes annotations only; it does not alter the fitted model
     or predictions.
     """
+    try:
+        import graphviz
+    except ImportError:
+        graphviz = None
+
     for i in range(min(n_trees, len(model.estimators_))):
         tree = model.estimators_[i]
-        if shutil.which("dot") is None:
+        if graphviz is None or shutil.which("dot") is None:
             plt.figure(figsize=(15, 15))
             plot_tree(
                 tree,

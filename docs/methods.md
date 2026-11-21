@@ -10,7 +10,7 @@ Earlier work investigated code-switching prediction. Those experiments, together
 
 The project reused the dataset described by [Wang et al. (2025)](https://doi.org/10.1038/s41597-025-04628-2). The team did not recruit the source-study participants or collect the original recordings. The study includes Mandarin Chinese–English bilinguals reading monolingual and code-switched sentences.
 
-The supplied `IA_data.xlsx` is the workbook used for the verified sample accounting below. The supplied Python configuration references `Data/RawEyeMovement.xlsx`; the correspondence between these filenames should be preserved explicitly rather than assumed. `Sentences.xlsx` contains stimulus information. `Descriptions.R` and `Technical_validation.R` provide source-study documentation and validation analyses and are separate from the Python classifier.
+The bundled `data/IA_data.xlsx` is the workbook used for the verified sample accounting below. The cleanup corrected the default configuration from the absent `Data/RawEyeMovement.xlsx` path to this bundled workbook. This enables the supplied dataset to run; it does not establish which filename or exact workbook revision was used at the conference. `Sentences.xlsx` contains stimulus information. `Descriptions.R` and `Technical_validation.R` provide source-study documentation and validation analyses and are separate from the Python classifier.
 
 | Unit | Identification | Interpretation |
 | --- | --- | --- |
@@ -182,7 +182,7 @@ The model used a stratified **60/40 participant-level split** with `random_state
 
 **Historical evaluation limitation:** preprocessing and supervised feature selection are fitted on the full dataset before the participant split. The initial configured forest is then fitted on the training partition and evaluated on the nominal evaluation partition. This earlier exposure to evaluation information means the Table 3 result is not independent of all model development. In a separate optimization branch, a forest is also tuned on the full dataset before scoring the nominal evaluation subset; that score must not be substituted for Table 3. The historical workflow is not leakage-free, and its scores are exploratory rather than an unbiased estimate of unseen-participant performance.
 
-**Poster Table 3 reports the initial configured, non-optimized random forest**, with accuracy **0.69** and macro F1 **0.69** for **32 evaluation participants**. These metrics must be associated with the configured settings in Section 6.1, not the poster-reported optimized selection. The majority-class baseline is **50%**, because the evaluation supports are 16 per group.
+The existing project documentation associates **poster Table 3** with the initial configured, non-optimized random forest: accuracy **0.69** and macro F1 **0.69** for **32 evaluation participants**. The poster itself labels Table 3 as results after hyperparameter optimization. The available materials therefore do not independently resolve exact run attribution; the table values are retained as historical reported results, not as proof that the supplied configuration generated that table. The majority-class baseline is **50%**, because the evaluation supports are 16 per group.
 
 Feature distributions use repeated interest-area measurements, while prediction uses participant samples. These observation levels must be distinguished in captions and sample-size statements. Train/validation gaps describe apparent fitting differences; they do not demonstrate external validity.
 
@@ -196,26 +196,27 @@ From the repository root, run the proficiency pipeline with the project owner's 
 python3 src/l2_proficiency/main.py
 ```
 
-The supplied configuration references `Data/RawEyeMovement.xlsx`. The verified sample table was supplied under the filename `IA_data.xlsx`; the relationship between those filenames remains an explicit documentation uncertainty. The repository command is recorded here as provided; an end-to-end execution of that repository layout was not performed during this documentation revision.
+The default configuration now loads the bundled `data/IA_data.xlsx`. Use `--data` to specify another path, `--no-plots` to avoid interactive windows, and `--skip-tuning` to omit the optional search. Current execution checks and their limits are documented in [VALIDATION.md](VALIDATION.md). The original conference workbook revision remains unverified.
 
 ### 8.2 Environment record
 
 | Item | Available record |
 | --- | --- |
-| Python version | **3.14.8**, reported by the project owner |
+| Original Python version | Not verified from a conference environment record |
+| Cleanup validation environment | Python 3.12.14; see `requirements-tested.txt` at repository root |
 | Historical package versions | Not recorded in the supplied materials |
 | Historical environment lockfile | Not available in the supplied materials |
 | Exact conference commit | Not established |
 | Model associated with poster Table 3 | Initial configured random forest; see Sections 6.1 and 7 |
 
-The reported Python version has not been independently tied to a saved conference-run environment. It should not be interpreted as proof of the original interpreter or package versions. A current environment record, if added later, should be identified separately from the historical environment.
+The cleanup environment is recorded separately from the historical environment and does not prove the original interpreter or package versions.
 
 ### 8.3 Remaining documentation limitations
 
 The following details remain unresolved and are retained explicitly:
 
 - The exact conference script revision or commit, and its correspondence to the reorganized repository entry point.
-- The correspondence between `IA_data.xlsx` and the configured `Data/RawEyeMovement.xlsx` input.
+- Whether the bundled `IA_data.xlsx` is identical to the workbook revision used for the conference run; the configured default now uses this bundled file.
 - Historical dependency versions and a complete saved execution environment.
 - The complete saved optimized estimator, including its selected `min_samples_split` and `max_leaf_nodes` values.
 - Whether the additional transformations mentioned in the earlier working documentation were used in the conference run, and in what order.
@@ -223,7 +224,7 @@ The following details remain unresolved and are retained explicitly:
 
 Archived and reorganized code versions differ in some seed settings, label mappings, and preprocessing details. The label mapping and result attribution documented here follow the project owner's confirmations; alternate code versions are not evidence that the reported run used their settings. In particular, one supplied configuration declares the reverse target mapping (`L=0`, `H=1`), while the confirmed reported analysis uses **`H=0`, `L=1`**. This discrepancy is documented rather than silently reconciled.
 
-The preprocessing-stage labels described in Section 4.4 are an established implementation detail, not an unresolved question. This revision clarifies documentation and does not rerun models or alter the conference results.
+The preprocessing-stage labels described in Section 4.4 are an established implementation detail, not an unresolved question. The cleanup execution checks are separate from the historical conference results, which remain unchanged.
 
 ## 9. Related documentation and source
 

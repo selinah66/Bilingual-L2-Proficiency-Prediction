@@ -1,0 +1,2 @@
+# Compatibility entry point; maintained dependency list is at repository root.
+-r ../requirements.txt

@@ -1,3 +1,7 @@
+"""Run the historical conference workflow; see README for evaluation limits."""
+
+import argparse
+
 from sklearn.model_selection import train_test_split
 
 from config import (
@@ -21,16 +25,6 @@ from models import (
     train_random_forest,
     tune_random_forest,
 )
-from plots import (
-    plot_confusion_matrix,
-    plot_descriptive_stats_comparison,
-    plot_feature_correlation,
-    plot_feature_distributions,
-    plot_feature_importance_analysis,
-    plot_preprocessing_stages,
-    plot_proficiency_radar,
-    visualize_decision_trees,
-)
 from preprocessing import preprocess_pipeline
 from reporting import (
     print_feature_analysis,
@@ -42,11 +36,20 @@ from reporting import (
 )
 
 
-def main():
+def main(data_path=FILEPATH, no_plots=False, skip_tuning=False):
+    if not no_plots:
+        import plots
+
+    def show_plot(name, *args, **kwargs):
+        if not no_plots:
+            getattr(plots, name)(*args, **kwargs)
+
+    print("Historical exploratory workflow: full-dataset preprocessing and feature")
+    print("selection limit held-out and cross-validation performance estimates.")
     # 1. Load and inspect data.
-    data = load_data(FILEPATH)
-    plot_feature_distributions(data)
-    plot_proficiency_radar(data)
+    data = load_data(data_path)
+    show_plot("plot_feature_distributions", data)
+    show_plot("plot_proficiency_radar", data)
 
     # 2. Run the original preprocessing.
     preprocessing_steps = preprocess_pipeline(
@@ -62,8 +65,8 @@ def main():
         NUMERIC_COLUMNS,
         steps=["encoding", "filtering", "imputation", "scaling"],
     )
-    plot_preprocessing_stages(preprocessing_steps, "IA_FIXATION_COUNT")
-    plot_descriptive_stats_comparison(preprocessing_steps)
+    show_plot("plot_preprocessing_stages", preprocessing_steps, "IA_FIXATION_COUNT")
+    show_plot("plot_descriptive_stats_comparison", preprocessing_steps)
     print_preprocessing_stage_statistics(preprocessing_steps, "IA_FIXATION_COUNT")
     print_regression_path_statistics(preprocessing_steps)
 
@@ -107,11 +110,14 @@ def main():
     )
 
     # This score belongs to the separately tuned forest.
-    tuned_model = tune_random_forest(X_selected, y)
-    print(
-        "Tuned random forest test score: "
-        f"{tuned_model.score(X_test, y_test):.2f}"
-    )
+    if not skip_tuning:
+        tuned_model = tune_random_forest(X_selected, y)
+        print(
+            "Tuned random forest nominal test score (full-data refit): "
+            f"{tuned_model.score(X_test, y_test):.2f}"
+        )
+    else:
+        print("Skipping optional full-dataset hyperparameter search.")
 
     # These results belong to the configured primary forest, not tuned_model.
     configured_model = train_random_forest(X_train, y_train)
@@ -127,8 +133,8 @@ def main():
     evaluate_model(configured_model, X_selected, y)
 
     # 7. Generate the relevant reports and figures.
-    plot_feature_correlation(X, X.columns)
-    plot_feature_importance_analysis(
+    show_plot("plot_feature_correlation", X, X.columns)
+    show_plot("plot_feature_importance_analysis", 
         X,
         y,
         selected_features,
@@ -141,8 +147,8 @@ def main():
         importances,
         get_feature_description,
     )
-    plot_confusion_matrix(y_test, test_predictions)
-    visualize_decision_trees(
+    show_plot("plot_confusion_matrix", y_test, test_predictions)
+    show_plot("visualize_decision_trees", 
         configured_model,
         selected_features,
         max_depth=MAX_DEPTH,
@@ -152,4 +158,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data", type=str, default=FILEPATH,
+                        help="Input Excel workbook (default: data/IA_data.xlsx).")
+    parser.add_argument("--no-plots", action="store_true",
+                        help="Run without opening figures or loading plotting dependencies.")
+    parser.add_argument("--skip-tuning", action="store_true",
+                        help="Skip the optional 50-candidate search; retain configured-model evaluation.")
+    options = parser.parse_args()
+    main(data_path=options.data, no_plots=options.no_plots,
+         skip_tuning=options.skip_tuning)

@@ -121,7 +121,7 @@ def print_regression_path_statistics(processing_steps):
     for stage_name, label in stages:
         data = processing_steps[stage_name]["IA_REGRESSION_PATH_DURATION"].dropna()
         print(f"\n{label}:")
-        unit = " (robust-scaled units)" if stage_name == "processed" else " ms"
+        unit = " (robust-scaled units)" if stage_name in {"imputed", "processed"} else " ms"
         print(f"Mean: {data.mean():.2f}{unit}")
         print(f"Median: {data.median():.2f}{unit}")
         print(f"Std: {data.std():.2f}{unit}")

@@ -43,7 +43,7 @@ Features include participant means of first-fixation duration, regression-path d
 
 ## Results
 
-![Dwell time and fixation count by proficiency group](figures/readingMeasuresbyProf.png)
+![Dwell time and fixation count by proficiency group](Figures/readingMeasuresbyProf.png)
 
 *Historical figure: distributions of repeated interest-area measurements, rather than independent participant samples. L = low proficiency; H = high proficiency. Dwell time is shown in milliseconds.*
 

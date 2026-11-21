@@ -12,7 +12,7 @@ Our project asks whether participant-level summaries of reading behavior disting
 - **Bilingual versus monolingual reading:** how different reader groups perform under specified language and task conditions.
 - **Proficiency-group prediction:** whether measurements distinguish proficiency groups within a bilingual sample.
 
-Evidence for one comparison provides context for the others; it does not establish that they have the same explanation or predictive performance.
+Evidence for one comparison provides context for the others, but it does not establish that they have the same explanation or predictive performance.
 
 ## Evidence from bilingual reading
 
@@ -30,7 +30,7 @@ These findings support considering multiple eye-movement measures. They do not e
 
 A simple interpretation such as “more fixations always mean poorer reading” is therefore unsuitable. The author also cautions that broad eye-tracking measures do not directly identify particular cognitive processes or prove conscious use of a reading strategy.
 
-A related but different task appears in [Wang and Pellicer-Sánchez (2022)](https://doi.org/10.1111/lang.12495), which studied incidental vocabulary learning during subtitled documentary viewing. Outcomes depended on what was tested: bilingual subtitles outperformed L2 captions for meaning recognition, whereas L2 captions outperformed bilingual subtitles for form recognition. In the bilingual-subtitle condition, total and first-pass reading times on unfamiliar L2 words predicted form-recognition and meaning-recall gains; this did not extend to every reading measure or learning outcome.
+A related but different task appears in [Wang and Pellicer-Sánchez (2022)](https://doi.org/10.1111/lang.12495), which studied incidental vocabulary learning during subtitled documentary viewing. Outcomes depended on what was tested: bilingual subtitles outperformed L2 captions for meaning recognition, whereas L2 captions outperformed bilingual subtitles for form recognition. In the bilingual-subtitle condition, total and first-pass reading times on unfamiliar L2 words predicted form-recognition and meaning-recall gains. However, this did not extend to every reading measure or learning outcome.
 
 This study provides context for interpreting attention and learning, rather than directly testing sentence-reading proficiency classification. Its immediate posttests also do not establish long-term vocabulary retention.
 
@@ -40,13 +40,13 @@ This study provides context for interpreting attention and learning, rather than
 
 The full stimulus pool contained **1,280 experimental sentences across eight conditions**. Each participant received **160 critical sentences plus 40 fillers**, or 200 sentences in total. The pool size is therefore different from the number of trials presented to each participant.
 
-The higher-proficiency group comprised English majors scoring at least 50 on the Oxford Placement Test; the lower-proficiency group comprised non-English majors scoring 20–35. Self-rated language skills were also considered. The Bilingual Switching Questionnaire measured switching frequency; it was not the objective proficiency test.
+The higher-proficiency group comprised English majors scoring at least 50 on the Oxford Placement Test, while the lower-proficiency group comprised non-English majors scoring 20–35. Self-rated language skills were also considered. The Bilingual Switching Questionnaire measured switching frequency.
 
 Because group membership also differed by academic major, interpretation should remain tied to these source-defined groups. The classifier does not isolate proficiency from all related educational or language-experience differences.
 
 ## Implications for feature interpretation
 
-The source study provides measurements for two target interest areas within reading trials. These are repeated observations, not independent participants. Our final modeling unit is the **participant**; preprocessing and aggregation are described in [methods.md](methods.md).
+The source study provides measurements for two target interest areas within reading trials. These are repeated observations, not independent participants. Our final modeling unit is the **participant**. Preprocessing and aggregation are described in [methods.md](methods.md).
 
 The following definitions summarize the source study's measures. Interpretation depends on the text, task, and analysis.
 

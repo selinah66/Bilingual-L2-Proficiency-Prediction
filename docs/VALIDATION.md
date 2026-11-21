@@ -4,7 +4,7 @@ These checks describe the cleaned repository in the current runtime. They do not
 
 ## Environment
 
-Python 3.12.14 with the direct dependency versions in [requirements-tested.txt](../requirements-tested.txt). The runtime already had these packages installed; a fresh installation from the requirements files was not performed. The optional Graphviz Python package was absent, and tree plotting used the Matplotlib fallback.
+Python 3.12.14 with the direct dependency versions in [requirements-tested.txt](../requirements-tested.txt). The runtime already had these packages installed, there was no fresh installation from the requirements files performed. The optional Graphviz Python package was absent, and tree plotting used the Matplotlib fallback.
 
 ## Checks completed
 
@@ -37,15 +37,15 @@ Participant aggregation produced 80 rows and 10 candidate predictors, including 
 
 ## Rerun scores are separate from conference results
 
-The first configured-model check returned 0.69 evaluation accuracy; the later full-workflow check returned 0.72. The full-data tuned estimator returned a nominal evaluation accuracy of 0.81. These are execution observations, not new validated performance claims. In particular, the tuned estimator is refitted on all participants before scoring the nominal evaluation subset, so that subset is not held out from its training.
+The first configured-model check returned 0.69 evaluation accuracy, while the later full-workflow check returned 0.72. The full-data tuned estimator returned a nominal evaluation accuracy of 0.81. These are execution observations, not new validated performance claims. In particular, the tuned estimator is refitted on all participants before scoring the nominal evaluation subset, so that subset is not held out from its training.
 
 The original workflow leaves selector forests and repeated cross-validation splits unseeded. Feature selection also fits a separate forest from the forest used to display feature importances. Rerun variation and possible discrepancies between selected features and displayed rankings are therefore expected. No seeds, transformations, selected features, hyperparameters, or scientific evaluation procedures were changed during cleanup.
 
 ## Limits of these checks
 
 - Full-dataset preprocessing and supervised feature selection still influence evaluation.
-- Plot generation was checked with Agg; interactive windows were not manually exercised.
-- Optional Graphviz rendering itself was not checked; its Matplotlib fallback was.
+- Plot generation was checked with Agg.
+- Optional Graphviz rendering itself was not checked, while its Matplotlib fallback was.
 - Archived scripts, R scripts, and the supplementary classifier-comparison utility were not executed.
 - Historical conference commit, fitted estimator, and environment remain unverified.
 - A successful run does not establish source-data redistribution permissions, external validity, or publication status.

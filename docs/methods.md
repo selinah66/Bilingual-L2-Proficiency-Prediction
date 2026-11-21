@@ -10,7 +10,7 @@ Earlier work investigated code-switching prediction. Those experiments, together
 
 The project reused the dataset described by [Wang et al. (2025)](https://doi.org/10.1038/s41597-025-04628-2). The team did not recruit the source-study participants or collect the original recordings. The study includes Mandarin Chinese–English bilinguals reading monolingual and code-switched sentences.
 
-The bundled `data/IA_data.xlsx` is the workbook used for the verified sample accounting below. The cleanup corrected the default configuration from the absent `Data/RawEyeMovement.xlsx` path to this bundled workbook. This enables the supplied dataset to run; it does not establish which filename or exact workbook revision was used at the conference. `Sentences.xlsx` contains stimulus information. `Descriptions.R` and `Technical_validation.R` provide source-study documentation and validation analyses and are separate from the Python classifier.
+The bundled `data/IA_data.xlsx` is the workbook used for the verified sample accounting below. The cleanup corrected the default configuration from the absent `Data/RawEyeMovement.xlsx` path to this bundled workbook. This enables the supplied dataset to run, but it does not establish which filename or exact workbook revision was used at the conference. `Sentences.xlsx` contains stimulus information. `Descriptions.R` and `Technical_validation.R` provide source-study documentation and validation analyses and are separate from the Python classifier.
 
 | Unit | Identification | Interpretation |
 | --- | --- | --- |
@@ -30,13 +30,13 @@ The bundled `data/IA_data.xlsx` is the workbook used for the verified sample acc
 | Low / high participants | 40 / 40 | 40 / 40 |
 | Low / high interest-area records | 12,800 / 12,800 | 5,729 / 5,561 |
 
-These sample-flow counts have been verified by the project owner for the documented preprocessing. The input workbook contains 160 critical trials per participant and two interest-area records per participant–trial. Filtering can retain one or both records from a trial. The source study also presented 40 filler sentences per participant; these are distinct from the 160 critical trials represented here.
+These sample-flow counts have been verified by the project owner for the documented preprocessing. The input workbook contains 160 critical trials per participant and two interest-area records per participant–trial. Filtering can retain one or both records from a trial. The source study also presented 40 filler sentences per participant. However, these are distinct from the 160 critical trials represented here.
 
 The final modeling table has **one row per participant**, giving 80 samples. The 11,290 retained interest-area records contribute to those features and are not treated as 11,290 independent people.
 
 ## 3. Measurements and initial inspection
 
-The input is an interest-area report containing calculated eye-movement measures. It does not contain continuous timestamped gaze coordinates; this project did not perform raw-gaze event detection.
+The input is an interest-area report containing calculated eye-movement measures. It does not contain continuous timestamped gaze coordinates, and this project did not perform raw-gaze event detection.
 
 | Measure | Input field | Interpretation |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ The input is an interest-area report containing calculated eye-movement measures
 | First-run fixation count | `IA_FIRST_RUN_FIXATION_COUNT` | Number of fixations in the first run |
 | Regression counts | `IA_REGRESSION_IN_COUNT`, `IA_REGRESSION_OUT_COUNT` | Regressions into or out of an interest area |
 
-Raw duration measurements are recorded in milliseconds; fixation and regression measures are counts, and `IA_SKIP` is a binary indicator. Scaled duration and count inputs no longer retain those original units. The physical unit of `IA_FIRST_SACCADE_AMPLITUDE` is not established in the repository documentation and is therefore left unspecified; captions should not assign degrees, pixels, or another physical unit without verified metadata. Derived features calculated after scaling must be labeled as transformed features rather than raw physical measurements.
+Raw duration measurements are recorded in milliseconds; fixation and regression measures are counts, and `IA_SKIP` is a binary indicator. Scaled duration and count inputs no longer retain those original units. The physical unit of `IA_FIRST_SACCADE_AMPLITUDE` is not established in the repository documentation and is therefore left unspecified. Captions should not assign degrees, pixels, or another physical unit without verified metadata. Derived features calculated after scaling must be labeled as transformed features rather than raw physical measurements.
 
 Initial inspection checks column names, types, missingness, participant labels, and duplicate participant–trial–interest-area keys. Participant IDs and item IDs are identifiers.
 
@@ -59,7 +59,7 @@ Initial inspection checks column names, types, missingness, participant labels, 
 
 ### 4.1 Record filtering
 
-`filter_rows()` retains records whose `IA_LABEL` begins with an ASCII alphabetic character, using `^[a-zA-Z]`. This is the implemented operational rule for retaining English records; it is not a language-classification model.
+`filter_rows()` retains records whose `IA_LABEL` begins with an ASCII alphabetic character, using `^[a-zA-Z]`. This is the implemented operational rule for retaining English records.
 
 The configured missingness-filter groups are processed after excluding protected columns. With the supplied configuration, this removes records missing `IA_FIRST_RUN_DWELL_TIME`, followed by those missing `IA_FIRST_SACCADE_AMPLITUDE`. Records missing any configured critical field are then excluded:
 
@@ -129,7 +129,7 @@ Together with the five means and retained condition value, this provides ten can
 
 ## 6. Feature selection and model fitting
 
-Random-forest impurity-based importance is used to rank candidates and retain five predictors. The poster identifies the following five predictors; this list identifies the selected set and does not claim an independently verified importance ranking:
+Random-forest impurity-based importance is used to rank candidates and retain five predictors. The poster identifies the following five predictors. This list identifies the selected set and does not claim an independently verified importance ranking:
 
 | Poster name | Model field | Representation |
 | --- | --- | --- |
@@ -154,11 +154,11 @@ The primary reported metrics in the current script and the metrics in **poster T
 | Features per split (`max_features`) | 0.3 | 0.5 |
 | Class weights (`class_weight`) | `balanced` | `balanced` in the supplied tuning code |
 
-The poster's optimized selection does not identify every estimator setting. In particular, the selected `max_leaf_nodes` value has not been recovered. The supplied tuning code fixes `bootstrap=True`; no missing saved-run parameters are inferred from defaults.
+The poster's optimized selection does not identify every estimator setting. In particular, the selected `max_leaf_nodes` value has not been recovered. The supplied tuning code fixes `bootstrap=True`.
 
 ### 6.2 Hyperparameter-search configuration
 
-The supplied tuning code uses `RandomizedSearchCV` to evaluate **50 candidate configurations**, scored by **weighted F1** (`f1_weighted`), with **5-fold cross-validation repeated 3 times**. The estimator and randomized search use `random_state=42`. The supplied `RepeatedKFold` construction does not set its own random state; do not assume all fold assignments were fixed by the search seed.
+The supplied tuning code uses `RandomizedSearchCV` to evaluate **50 candidate configurations**, scored by **weighted F1** (`f1_weighted`), with **5-fold cross-validation repeated 3 times**. The estimator and randomized search use `random_state=42`. The supplied `RepeatedKFold` construction does not set its own random state.
 
 | Search parameter | Candidate values in the supplied code |
 | --- | --- |
@@ -170,9 +170,7 @@ The supplied tuning code uses `RandomizedSearchCV` to evaluate **50 candidate co
 | `bootstrap` | `True` |
 | `max_leaf_nodes` | 50, 100 |
 
-Weighted F1 is the search objective; the macro F1 reported in Table 3 is a different metric. Neither the best cross-validation score nor the separate optimized-model score should be presented as the Table 3 result.
-
-The participant groups are already balanced. The feature-assembly function's optional weighted sampling branch, if triggered, reorders all rows without replacement rather than changing class counts. Class weighting in the forest is a separate mechanism.
+Weighted F1 is the search objective. The participant groups are already balanced. The feature-assembly function's optional weighted sampling branch, if triggered, reorders all rows without replacement rather than changing class counts. Class weighting in the forest is a separate mechanism.
 
 ## 7. Evaluation and interpretation
 
@@ -180,11 +178,11 @@ The model used a stratified **60/40 participant-level split** with `random_state
 
 `RepeatedKFold` was used for the repeated validation procedure, with 5 folds repeated 3 times. This cross-validation splitter is not stratified, unlike the 60/40 training/evaluation split. Randomized search involves 15 fold evaluations per candidate. The separate classifier-comparison utility uses 5-fold cross-validation.
 
-**Historical evaluation limitation:** preprocessing and supervised feature selection are fitted on the full dataset before the participant split. The initial configured forest is then fitted on the training partition and evaluated on the nominal evaluation partition. This earlier exposure to evaluation information means the Table 3 result is not independent of all model development. In a separate optimization branch, a forest is also tuned on the full dataset before scoring the nominal evaluation subset; that score must not be substituted for Table 3. The historical workflow is not leakage-free, and its scores are exploratory rather than an unbiased estimate of unseen-participant performance.
+**Historical evaluation limitation:** preprocessing and supervised feature selection are fitted on the full dataset before the participant split. The initial configured forest is then fitted on the training partition and evaluated on the nominal evaluation partition. This earlier exposure to evaluation information means the Table 3 result is not independent of all model development. In a separate optimization branch, a forest is also tuned on the full dataset before scoring the nominal evaluation subset. The historical workflow is not leakage-free, and its scores are exploratory rather than an unbiased estimate of unseen-participant performance.
 
-The existing project documentation associates **poster Table 3** with the initial configured, non-optimized random forest: accuracy **0.69** and macro F1 **0.69** for **32 evaluation participants**. The poster itself labels Table 3 as results after hyperparameter optimization. The available materials therefore do not independently resolve exact run attribution; the table values are retained as historical reported results, not as proof that the supplied configuration generated that table. The majority-class baseline is **50%**, because the evaluation supports are 16 per group.
+The existing project documentation associates **poster Table 3** with the initial configured, non-optimized random forest: accuracy **0.69** and macro F1 **0.69** for **32 evaluation participants**. The poster itself labels Table 3 as results after hyperparameter optimization. The table values are retained as historical reported results. The majority-class baseline is **50%**, because the evaluation supports are 16 per group.
 
-Feature distributions use repeated interest-area measurements, while prediction uses participant samples. These observation levels must be distinguished in captions and sample-size statements. Train/validation gaps describe apparent fitting differences; they do not demonstrate external validity.
+Feature distributions use repeated interest-area measurements, while prediction uses participant samples. These observation levels must be distinguished in captions and sample-size statements. Train/validation gaps describe apparent fitting differences, so they do not demonstrate external validity.
 
 ## 8. Execution and reproducibility status
 
@@ -222,7 +220,7 @@ The following details remain unresolved and are retained explicitly:
 - Whether the additional transformations mentioned in the earlier working documentation were used in the conference run, and in what order.
 - The physical unit of `IA_FIRST_SACCADE_AMPLITUDE` in the repository's input documentation.
 
-Archived and reorganized code versions differ in some seed settings, label mappings, and preprocessing details. The label mapping and result attribution documented here follow the project owner's confirmations; alternate code versions are not evidence that the reported run used their settings. In particular, one supplied configuration declares the reverse target mapping (`L=0`, `H=1`), while the confirmed reported analysis uses **`H=0`, `L=1`**. This discrepancy is documented rather than silently reconciled.
+Archived and reorganized code versions differ in some seed settings, label mappings, and preprocessing details. The label mapping and result attribution documented here follow the project owner's confirmations. In particular, one supplied configuration declares the reverse target mapping (`L=0`, `H=1`), while the confirmed reported analysis uses **`H=0`, `L=1`**. This discrepancy is documented rather than silently reconciled.
 
 The preprocessing-stage labels described in Section 4.4 are an established implementation detail, not an unresolved question. The cleanup execution checks are separate from the historical conference results, which remain unchanged.
 

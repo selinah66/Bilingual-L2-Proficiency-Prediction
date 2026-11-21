@@ -17,7 +17,7 @@ An exploratory machine-learning study of reading behavior in Mandarin Chinese–
 | Approach | Data inspection, preprocessing, participant-level feature engineering, and random-forest classification |
 | Conference-reported result | 69% accuracy and 0.69 macro F1 on an evaluation subset of 32 participants |
 | Baseline | 50% majority-class accuracy for the balanced evaluation subset |
-| Interpretation | Exploratory secondary analysis; historical data leakage limits the reported performance estimate |
+| Interpretation | Exploratory secondary analysis, while historical data leakage limits the reported performance estimate |
 
 **Evaluation caveat:** Although participants were separated between training and evaluation sets, preprocessing and supervised feature selection used the full dataset, and one model was tuned on the full dataset before evaluation. The reported scores therefore do not provide an unbiased estimate of performance on unseen participants.
 
@@ -25,11 +25,11 @@ An exploratory machine-learning study of reading behavior in Mandarin Chinese–
 
 Reading in a second language draws on language experience and processing resources. Eye-tracking measures provide a way to examine reading behavior, including how long readers fixate and whether they revisit text. This project explores whether these measurements can distinguish proficiency groups in an existing bilingual reading dataset.
 
-The task predicts the source study’s binary proficiency labels; it does not estimate a continuous proficiency score. Eye movements provide indirect measures of processing demands and do not directly measure comprehension or establish a cognitive mechanism.
+This task predicts the referenced study’s binary proficiency labels, but not a continuous proficiency score. Eye movements provide indirect measures of processing demands and do not directly measure comprehension or establish a cognitive mechanism.
 
 ## Project leadership
 
-As project lead, **Selina Hui** initiated the project and contributed to data inspection, feature engineering, model experimentation, visualization, interpretation, and poster preparation. The analysis was collaborative; individual contributions are listed below. Our team analyzed published data and did not collect the original eye-tracking recordings.
+As project lead, **Selina Hui** initiated the project and contributed to data inspection, feature engineering, model experimentation, visualization, interpretation, and poster preparation. The analysis was collaborative, and individual contributions are listed below. Our team analyzed published data and did not collect the original eye-tracking recordings.
 
 ## Approach
 
@@ -39,11 +39,11 @@ As project lead, **Selina Hui** initiated the project and contributed to data in
 4. **Explore and classify.** Examine group differences, select features, and train random-forest models.
 5. **Evaluate and communicate.** Summarize classification results and document the analysis in a conference poster and supplemental figures.
 
-Features include participant means of first-fixation duration, regression-path duration, total dwell time, fixation count, and first-saccade amplitude, plus derived ratios and a logarithmic first-fixation feature. Exact formulas and their order relative to scaling matter for interpretation; see the [methods](docs/methods.md).
+Features include participant means of first-fixation duration, regression-path duration, total dwell time, fixation count, and first-saccade amplitude, plus derived ratios and a logarithmic first-fixation feature. Exact formulas and their order relative to scaling matter for interpretation, please see the [methods](docs/methods.md).
 
 ## Results
 
-![Dwell time and fixation count by proficiency group](figures/readingMeasuresbyProf.png)
+![Dwell time and fixation count by proficiency group](Figures/readingMeasuresbyProf.png)
 
 *Historical figure: distributions of repeated interest-area measurements, rather than independent participant samples. L = low proficiency; H = high proficiency. Dwell time is shown in milliseconds.*
 
@@ -67,13 +67,13 @@ For per-class metrics, preprocessing counts, experimental configurations, and fi
 | Location | Contents |
 | --- | --- |
 | `src/l2_proficiency/` | Python analysis workflow: data loading, preprocessing, feature engineering, modeling, evaluation, and plots |
-| `data/` | Published source workbooks and source-study R scripts; see [data guide](data/README.md) |
+| `data/` | Published source workbooks and source-study R scripts. See [data guide](data/README.md) |
 | `figures/` | Saved historical figures |
 | `scripts/check_data.py` | Data-schema, sample-count, finite-feature, and participant-split audit |
 | `docs/` | Conference materials and research documentation |
 | `archive/` | Earlier code-switching/proficiency experiments and learning notes |
 
-The project initially explored code-switching prediction before shifting to English L2 proficiency classification. Archived work records that development; the proficiency workflow is the main analysis presented here.
+The project initially explored code-switching prediction before shifting to English L2 proficiency classification. Archived work records that development, and the proficiency workflow is the main analysis presented here.
 
 ## Run the analysis
 
@@ -100,7 +100,7 @@ Run the full historical workflow, including the 50-candidate search and interact
 python src/l2_proficiency/main.py
 ```
 
-Use `--no-plots` for a run without interactive windows, or `--data /path/to/workbook.xlsx` to override the default bundled `data/IA_data.xlsx`. The default full search performs 750 cross-validation fits plus a refit and may take longer. Figures display interactively; the workflow does not automatically overwrite saved conference figures.
+Use `--no-plots` for a run without interactive windows, or `--data /path/to/workbook.xlsx` to override the default bundled `data/IA_data.xlsx`. The default full search performs 750 cross-validation fits plus a refit and may take longer. Figures display interactively.
 
 Graphviz tree rendering is optional. If the Python `graphviz` package or system `dot` executable is absent, trees use Matplotlib instead. To enable Graphviz, install its Python package and the Graphviz system application.
 
@@ -126,7 +126,7 @@ This supplementary utility shares the historical full-data preprocessing limitat
 
 ## Limitations and next steps
 
-- **Small independent sample:** There are 80 participants; repeated reading records do not increase that number.
+- **Small independent sample:** There are 80 participants.
 - **Historical data leakage:** Learned preprocessing, feature selection, and tuning were not fully confined to training data.
 - **Restricted task:** The model distinguishes two source-study groups rather than measuring proficiency across populations or languages.
 - **Feature interpretation:** Filtering, transformations, and derived-feature formulas affect what model predictors represent.

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f2674f68-2255-4aa2-99af-9e2a544194d0" name="Changes" comment="higher accuracy ML Model!" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "selinah66"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/selinah66/NeurotechUSC-Bilingual-Code-Switching.git",
+    "accountId": "3a1308a8-4b38-4e6e-a23b-8f225e14d70a"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2u61AbeLzU87nq5eS3q0hLx4ioX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python.Final_ML.executor": "Run",
+    "Python.LP_main.executor": "Run",
+    "Python.LP_model_training.executor": "Run",
+    "Python.LP_preprocessing.executor": "Run",
+    "Python.Selina_Data_Analysis.executor": "Run",
+    "Python.config.executor": "Run",
+    "Python.config_switch.executor": "Run",
+    "Python.feature_eng.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.model_training.executor": "Run",
+    "Python.preprocessing.executor": "Run",
+    "Python.selina_MLLP.executor": "Run",
+    "Python.selina_MLmain.executor": "Run",
+    "Python.visualizations.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/Selina/Documents/GitHub/NeurotechUSC-Bilingual-Code-Switching",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/langProficiency" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/codeSwitching" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153" />
+        <option value="bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f2674f68-2255-4aa2-99af-9e2a544194d0" name="Changes" comment="" />
+      <created>1741554067742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741554067742</updated>
+      <workItem from="1741554068762" duration="6011000" />
+      <workItem from="1744533747905" duration="4960000" />
+      <workItem from="1745282310385" duration="58500000" />
+    </task>
+    <task id="LOCAL-00001" summary="updatedData">
+      <option name="closed" value="true" />
+      <created>1745380264680</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745380264680</updated>
+    </task>
+    <task id="LOCAL-00002" summary="higher accuracy ML Model!">
+      <option name="closed" value="true" />
+      <created>1745394623601</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745394623601</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updatedData" />
+    <MESSAGE value="higher accuracy ML Model!" />
+    <option name="LAST_COMMIT_MESSAGE" value="higher accuracy ML Model!" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/NeurotechUSC_Bilingual_Code_Switching$Selina_Data_Analysis.coverage" NAME="Selina_Data_Analysis Coverage Results" MODIFIED="1741559840219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DataML" />
+    <SUITE FILE_PATH="coverage/NeurotechUSC_Bilingual_Code_Switching$LP_model_training.coverage" NAME="LP_model_training Coverage Results" MODIFIED="1744537824646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/NeurotechUSC_Bilingual_Code_Switching$model_training.coverage" NAME="model_training Coverage Results" MODIFIED="1744535523335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/README_md$preprocessing.coverage" NAME="preprocessing Coverage Results" MODIFIED="1745351884579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/README_md$model_training.coverage" NAME="model_training Coverage Results" MODIFIED="1745386049277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/README_md$config.coverage" NAME="config Coverage Results" MODIFIED="1745305546740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/NeurotechUSC_Bilingual_Code_Switching$selina_MLLP.coverage" NAME="selina_MLLP Coverage Results" MODIFIED="1744537830572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/README_md$Final_ML.coverage" NAME="Final_ML Coverage Results" MODIFIED="1745302494760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/README_md$visualizations.coverage" NAME="visualizations Coverage Results" MODIFIED="1745389533981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/README_md$LP_preprocessing.coverage" NAME="LP_preprocessing Coverage Results" MODIFIED="1745300753756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/README_md$Selina_Data_Analysis.coverage" NAME="Selina_Data_Analysis Coverage Results" MODIFIED="1745288987082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/README_md$LP_main.coverage" NAME="LP_main Coverage Results" MODIFIED="1745304828515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/README_md$main.coverage" NAME="main Coverage Results" MODIFIED="1745394351105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/README_md$LP_model_training.coverage" NAME="LP_model_training Coverage Results" MODIFIED="1745296840289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+    <SUITE FILE_PATH="coverage/NeurotechUSC_Bilingual_Code_Switching$selina_MLmain.coverage" NAME="selina_MLmain Coverage Results" MODIFIED="1744534348482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/README_md$config_switch.coverage" NAME="config_switch Coverage Results" MODIFIED="1745310407392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/codeSwitching" />
+    <SUITE FILE_PATH="coverage/README_md$feature_eng.coverage" NAME="feature_eng Coverage Results" MODIFIED="1745364603504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/langProficiency" />
+  </component>
+</project>

@@ -25,7 +25,7 @@ An exploratory machine-learning study of reading behavior in Mandarin Chinese–
 
 Reading in a second language draws on language experience and processing resources. Eye-tracking measures provide a way to examine reading behavior, including how long readers fixate and whether they revisit text. This project explores whether these measurements can distinguish proficiency groups in an existing bilingual reading dataset.
 
-The task predicts the source study’s binary proficiency labels; it does not estimate a continuous proficiency score. Eye movements provide indirect measures of processing demands and do not directly measure comprehension or establish a cognitive mechanism.
+This task predicts the referenced study’s binary proficiency labels, but not a continuous proficiency score. Eye movements provide indirect measures of processing demands and do not directly measure comprehension or establish a cognitive mechanism.
 
 ## Project leadership
 
